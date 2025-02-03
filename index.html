@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Message</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #message {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+      margin-top: 50px;
+    }
+
+    .flower {
+      position: absolute;
+      bottom: -50px;
+      opacity: 0;
+      font-size: 60px; /* Larger roses */
+      animation: flowerAnimation 5s forwards;
+    }
+
+    .flower.red { color: red; }
+    .flower.yellow { color: gold; }
+    .flower.pink { color: pink; }
+    .flower.white { color: white; }
+
+    @keyframes flowerAnimation {
+      0% { bottom: -50px; opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+
+    #link {
+      text-decoration: none;
+      color: #3498db;
+      font-size: 18px;
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+
+    #link:hover { color: #e74c3c; }
+
+    #from-bryce {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 28px;
+      font-family: "Brush Script MT", cursive;
+      color: #b30000;
+    }
+  </style>
+</head>
+<body>
+
+  <a id="link" onclick="showMessage()">Click to See the Roses</a>
+
+  <div id="message">
+    My dearest Sharon, as the afternoon sun 🌞 shines softly upon us, I am reminded of the warmth and light you bring into my life ✨. You are the blessing I never knew I needed, the peace that fills my soul 🕊️, and the love that strengthens my heart 💖. Every moment with you is a gift 🎁, and I am grateful for the way our spirits connect so effortlessly 🙏. You are my constant, my heart's desire, and my forever 💫. May this afternoon bring you as much joy and light as you bring to me 🌻. I love you deeply, always and forever 💕.
+  </div>
+
+  <div id="from-bryce">From Bryce</div>
+
+  <!-- Slow romantic background music -->
+  <audio id="backgroundMusic" src="https://www.example.com/slow-romantic-song.mp3" loop></audio>
+
+  <script>
+    function showMessage() {
+      // Show message and play music
+      document.getElementById("message").style.display = "block";
+      document.getElementById("backgroundMusic").play();
+
+      // Start generating flowers at random intervals
+      setInterval(createRandomFlower, 500);
+    }
+
+    function createRandomFlower() {
+      const colors = ['red', 'yellow', 'pink', 'white'];
+      const flower = document.createElement("div");
+      flower.classList.add("flower", colors[Math.floor(Math.random() * colors.length)]);
+      flower.innerHTML = "🌹"; // Rose emoji
+      document.body.appendChild(flower);
+
+      // Randomize horizontal position of flowers
+      flower.style.left = Math.random() * 100 + "%";
+
+      // Remove flower after animation ends
+      flower.addEventListener("animationend", function() {
+        flower.remove();
+      });
+    }
+  </script>
+  
+</body>
+</html>
